@@ -24,12 +24,6 @@ metadata hubApp = {
 @description('Required. FinOps hub app getting deployed.')
 param app HubAppProperties
 
-@description('Optional. Indicates whether to enable Azure Hybrid Benefit recommendations. These recommendations flag VMs and SQL VMs without Azure Hybrid Benefit enabled, which may generate noise if your organization does not have on-premises licenses. Default: false.')
-param enableAHBRecommendations bool = false
-
-@description('Optional. Indicates whether to enable non-Spot AKS cluster recommendations. These recommendations flag AKS clusters that use autoscaling without Spot VMs, which may generate noise since Spot VMs are only appropriate for interruptible workloads. Default: false.')
-param enableSpotRecommendations bool = false
-
 @description('Required. Metadata describing shared resources from the Core app. Must be v13 or higher.')
 @validate(x => isSupportedVersion(x.version, '13.0', ''), 'Core app version must be 13.0 or higher.')
 param core CoreMetadata
